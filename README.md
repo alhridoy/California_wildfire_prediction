@@ -1,8 +1,4 @@
-# H2O.ai Wildfire & Bushfire Challenge
-
-With [this documentation](FUTUREWORK.md), you can access the planned future work and any active issues.
-
---- 
+ 
 ## Getting Started
 
 ### Dependencies
