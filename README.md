@@ -1,18 +1,5 @@
 # H2O.ai Wildfire & Bushfire Challenge
-### Wildfire Forecast for Turkey on a Monthly Basis
-#### Team "Too Hot Encoder"
 
-<img src='app/media/turkey_wildfire_logo.png' width='450'>
-
----
-
-### Non-Technical Details
-With [this documentation](PROJECT.md), you can access information like motivation, goal and methodology.
-
-### Updates and Changes
-With [this documentation](CHANGES.md), you can access the additions and updates made since the first submission phase. 
-
-### Future Work
 With [this documentation](FUTUREWORK.md), you can access the planned future work and any active issues.
 
 --- 
@@ -83,6 +70,3 @@ and install the regenerated dependencies using
 ```
 pip install -r req.txt
 ```
-
-## Author
-* [Anil Ozturk](anilozturk96@gmail.com)
