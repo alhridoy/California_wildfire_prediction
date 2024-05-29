@@ -1,8 +1,3 @@
-# H2O.ai Wildfire & Bushfire Challenge
-### Wildfire Forecast for Turkey on a Monthly Basis
-#### Team "Too Hot Encoder"
-
----
 
 ## Changes & Updates
 
