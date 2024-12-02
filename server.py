@@ -1,7 +1,11 @@
-from app import inference, model_variables, overview, model_details, dataset_introduction, performance, wildfire_data_insights, temperature_data_insights, training_data_insights
 import streamlit as st
+from app import (
+    inference, model_variables, overview, model_details,
+    dataset_introduction, performance, wildfire_data_insights,
+    temperature_data_insights, training_data_insights
+)
 
-
+# Define page categories and their corresponding pages
 PAGES = {
     "Project Overview": overview,
     "Used Datasets": dataset_introduction,
@@ -14,34 +18,37 @@ PAGES = {
     "Evaluation": performance
 }
 
-CATEGORIES = ["Overview", "Data Analysis", "Pipeline Details", "Runtime"]
+CATEGORIES = {
+    "Overview": list(PAGES.keys())[:2],
+    "Data Analysis": list(PAGES.keys())[2:5],
+    "Pipeline Details": list(PAGES.keys())[5:7],
+    "Runtime": list(PAGES.keys())[7:]
+}
 
-st.sidebar.image("app/media/turkey_wildfire_logo.png", width=285)
-#st.sidebar.title('Menu')
-#selection = st.sidebar.radio("", list(PAGES.keys()))
+def main():
+    # Set up the sidebar
+    try:
+        st.sidebar.image("app/media/wildfire_logo.png", width=285)
+    except:
+        st.sidebar.title("California Wildfire Prediction")
 
-st.sidebar.markdown("First select a category and then the page you want to view that belongs to the selected category.")
+    st.sidebar.markdown("## Navigation")
+    st.sidebar.markdown("Select a category and then choose a page to view.")
 
-st.sidebar.markdown("## Select a category:")
-#cat_selection = st.sidebar.selectbox("", CATEGORIES)
-cat_selection = st.sidebar.radio("", CATEGORIES)
+    # Category selection
+    cat_selection = st.sidebar.radio("Select Category:", list(CATEGORIES.keys()))
+    
+    # Page selection based on category
+    available_pages = CATEGORIES[cat_selection]
+    selection = st.sidebar.radio("Select Page:", available_pages)
 
-st.sidebar.markdown("## Select a page:")
+    # Display selected page
+    try:
+        page = PAGES[selection]
+        page.app()
+    except Exception as e:
+        st.error(f"Error loading page: {str(e)}")
+        st.info("Please try selecting a different page or refresh the application.")
 
-if cat_selection == "Overview":
-    #selection = st.sidebar.selectbox("", list(PAGES.keys())[:2])
-    selection = st.sidebar.radio("", list(PAGES.keys())[:2])
-elif cat_selection == "Data Analysis":
-    #selection = st.sidebar.selectbox("", list(PAGES.keys())[2:4])
-    selection = st.sidebar.radio("", list(PAGES.keys())[2:5])
-if cat_selection == "Pipeline Details":
-    #selection = st.sidebar.selectbox("", list(PAGES.keys())[4:6])
-    selection = st.sidebar.radio("", list(PAGES.keys())[5:7])
-if cat_selection == "Runtime":
-    #selection = st.sidebar.selectbox("", list(PAGES.keys())[6:])
-    selection = st.sidebar.radio("", list(PAGES.keys())[7:])
-
-
-print(selection)
-page = PAGES[selection]
-page.app()
+if __name__ == "__main__":
+    main()

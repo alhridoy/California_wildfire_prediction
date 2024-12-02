@@ -1,43 +1,65 @@
- 
-## Getting Started
+ # California Wildfire Prediction
 
-### Dependencies
-Latest version of your favourite conda package manager (>= 4.6) needs to be installed. Please refer to [conda docs](https://docs.conda.io/projects/conda/en/latest/user-guide/install/) for conda installation.
+A machine learning project to predict wildfire occurrences in California using historical fire data and temperature data.
 
-### Setup
-To be able to work in the project without any issues, create and activate your virtual working environment with the following commands:
+## 🚀 Quick Start
+
+### Prerequisites
+- Python 3.7 or higher
+- Conda package manager (>= 4.6)
+
+### Installation
+
+1. Clone the repository:
+```bash
+git clone https://github.com/alhridoy/California_wildfire_prediction.git
+cd California_wildfire_prediction
+```
+
+2. Create and activate the virtual environment:
 ```bash
 conda env create -f environment.yml
 conda activate wildfire
 ```
-**Warning:** The next steps are explained assuming your virtual environment is active.
+
 ### Running the Application
-You can directly run the application, make predictions and have look at the evaluation results of the pre-trained model. By running the command below, you can run the application where you can access detailed information about the project, generate predictions on test data, view model details, and evaluate model performance:
+
+Launch the web interface:
 ```bash
 streamlit run server.py
 ```
-When the command is run, the application will automatically open a new tab in your default browser.
+The application will open in your default web browser automatically.
 
-**Warning:** On your first try, you may encounter a Streamlit message asking for your e-mail. Skip this step by pressing 'Enter' without typing anything.
-### Custom Data Generation and Model Training (Optional)
-The repository comes with a pre-trained model and a pre-generated test set. But if you want to make your own changes, start a jupyter server with the following command:
-```
+> **Note:** If prompted for an email by Streamlit, you can skip this by pressing 'Enter'.
+
+## 📊 Features
+
+- Interactive wildfire prediction interface
+- Historical data analysis and visualization
+- Model performance evaluation
+- Custom data generation capabilities
+
+## 🔧 Advanced Usage
+
+### Custom Data Generation and Model Training
+
+1. Start Jupyter Notebook:
+```bash
 jupyter notebook
 ```
-A new tab for the jupyter server will open in your default browser, go to the `notebook` folder. You can run all the necessary phases for the project by running the notebooks in their numbered order.
 
-**Warning:** To run the data generation notebooks (numbered 1 and 2) you need to download raw data!
+2. Navigate to the `notebook` folder and run notebooks in numerical order:
+   - `01. WildfireData.ipynb`: Process raw fire data
+   - `02. TemperatureData.ipynb`: Process temperature data
+   - `03. DataAnalysis.ipynb`: Analyze processed data
+   - `04. DatasetCreation.ipynb`: Create training datasets
+   - `05. ModelTuning.ipynb`: Tune model parameters
+   - `06. ModelTraining.ipynb`: Train the final model
 
-**Warning:** If you are going to train the model on different are, country etc. , you should download the shapefile files of its polygon from [here](https://gadm.org/download_country.html) and extract them under `data/country_shape`. Then you should modify the corresponding lines in:
-```
-app/inference.py
-app/performance.py
-```
+### Raw Data Sources
 
-### Downloading Raw Data (Optional)
-You will need raw data to generate new training data.
-- You can download the global fire data pre-uploaded by H2O from [here](https://s3.us-west-1.amazonaws.com/ai.h2o.challenge.datasets/wildfire-challenge/firms_fires_2013_2021.zip)
-- You can download the temperature fire data from these links:
+- **Fire Data**: [H2O Global Fire Data](https://s3.us-west-1.amazonaws.com/ai.h2o.challenge.datasets/wildfire-challenge/firms_fires_2013_2021.zip)
+- **Temperature Data**:
   - [Average Temperature (2010-2019)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TAVG_Daily_LatLong1_2010.nc)
   - [Average Temperature (2020-)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TAVG_Daily_LatLong1_2020.nc)
   - [Maximum Temperature (2010-2019)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TMAX_Daily_LatLong1_2010.nc)
@@ -45,24 +67,18 @@ You will need raw data to generate new training data.
   - [Minimum Temperature (2010-2019)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TMIN_Daily_LatLong1_2010.nc)
   - [Minimum Temperature (2020-)](http://berkeleyearth.lbl.gov/auto/Global/Gridded/Complete_TMIN_Daily_LatLong1_2020.nc)
 
-After the necessary data is downloaded, it should be extracted to the `data/raw_data/` directory. After extraction, the contents of the `data/raw_data/` folder should be as follows:
-```
-- DL_FIRE_J1V-C2_216004/
-- DL_FIRE_M-C61_216003/
-- DL_FIRE_M-C61_216006/
-...
-- Complete_TAVG_Daily_LatLong1_2010.nc
-- Complete_TAVG_Daily_LatLong1_2010.nc
-- Complete_TMAX_Daily_LatLong1_2020.nc
-...
-```
+### Managing Dependencies
 
-### Adding Dependencies (Optional)
-If you want to add a dependency, add it to `req.in` and then regenerate the `req.txt` using
-```
+Add new dependencies to `req.in` and regenerate `req.txt`:
+```bash
 pip-compile req.in
-```
-and install the regenerated dependencies using
-```
 pip install -r req.txt
 ```
+
+## 📝 License
+
+This project is open source and available under the MIT License.
+
+## 🤝 Contributing
+
+Contributions, issues, and feature requests are welcome! Feel free to check the issues page.
